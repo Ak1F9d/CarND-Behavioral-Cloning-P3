@@ -102,7 +102,7 @@ Fully connected, outputs 1
 
 Here is a visualization of the architecture
 
-![model_architecture](images/model.png)
+![model_architecture](model.png)
 
 
 
@@ -110,36 +110,36 @@ Here is a visualization of the architecture
 
 To capture good driving behavior, I first started with sample data: recording several laps on track one using center lane driving. Here is an example image of center lane driving:
 
-![center](images/center_2016_12_01_13_32_43_558.jpg)
+![center](center_2016_12_01_13_32_43_558.jpg)
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to keep driving center. These images show what a recovery looks like starting from the left side of the road. :
 
-![recoverfromleft](images/center_2017_04_15_14_22_58_364.jpg)
+![recoverfromleft](center_2017_04_15_14_22_58_364.jpg)
 
 Then, I recorded driving clockwise and counter-clockwise at curves so that the vehicle would learn to curve more smoothly.
 
 To obtain more data, I used multiple cameras: center, left and right cameras. To correct camera positions, I added 0.06 to left steering data and subtract 0.06 from right steering data.  Here is example images of multiple cameras:
 
-![centerlane](images/dataexample.png)
-![centerlane](images/dataexample2.png)
-![centerlane](images/dataexample3.png)
-![centerlane](images/dataexample4.png)
+![centerlane](dataexample.png)
+![centerlane](dataexample2.png)
+![centerlane](dataexample3.png)
+![centerlane](dataexample4.png)
 
 To augment the data set, I also flipped images and angles thinking that this would combat the overfitting.
 
-![flip](images/flip.png)
+![flip](flip.png)
 
 After the collection process, I had 55800 number of data points. Here is an histogram of steering angles:
 
-![hist](images/histogram.png)
+![hist](histogram.png)
 
 I then preprocessed this data by converting RGB color to YUV, cropping center region of images and resize images so that image sizes are same as the input size of the model (model.py lines 73-77). For example, here is an image that has then been preprocessed:
 
-![preprocessed](images/preprocessed.png)
+![preprocessed](preprocessed.png)
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set.
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 3 as evidenced by the following graph. I used an Adam optimizer so that manually training the learning rate wasn't necessary.
 
-![modeltraining](images/trainhistory.png)
+![modeltraining](trainhistory.png)
 ____________________________________________________________________________________________________
